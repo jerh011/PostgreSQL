@@ -1,4 +1,4 @@
-update clinica.paciente set estado ='MEXICO'
+--update clinica.paciente set estado ='MEXICO'
 
 update clinica.paciente set estado='jalisco' WHERE pk_idpaciente ='P-0004'
 
