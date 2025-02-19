@@ -1,9 +1,9 @@
 SELECT * FROM CLINICA.especialista 
-WHERE pk_idespecialista IN (SELECT fk_idespecialista FROM agendar_cita
+WHERE pk_idespecialista IN (SELECT fk_idespecialista FROM CLINICA.agendar_cita
                             WHERE fechacita BETWEEN '2022-10-04' AND '2022-10-05');
 
 SELECT * FROM CLINICA.especialista 
-WHERE pk_idespecialista NOT IN (SELECT fk_idespecialista FROM agendar_cita
+WHERE pk_idespecialista NOT IN (SELECT fk_idespecialista FROM CLINICA.agendar_cita
                             WHERE fechacita BETWEEN '2022-10-04' AND '2022-10-05');
 
 SELECT * FROM clinica.paciente
