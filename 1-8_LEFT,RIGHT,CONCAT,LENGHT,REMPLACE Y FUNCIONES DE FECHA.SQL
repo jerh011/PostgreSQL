@@ -23,8 +23,8 @@ WHERE RIGHT (apellido,1)='Z';
 
 --CONCAT
 
-SELECT CONCAT ('El Paciente con ID: ', fk_idPaciente, ' Tiene un Peso de: ', peso, ' KG')
-FROM CLIENTE.EXPEDIENTE_DIAGNOSTICO;
+SELECT CONCAT ('El Paciente con ID: ', fk_idPaciente, ' Tiene un Peso de: ', pesos, ' KG')
+FROM CLINICA.EXPEDIENTE_DIAGNOSTICO;
 
 
 SELECT (nombre || ' ' || apellido) as NOMBRE_COMPLETO FROM CLINICA.PACIENTE;
@@ -38,7 +38,9 @@ FROM CLINICA.PACIENTE;
 --REMPLACE
 SELECT REPLACE ('MENSAJX','X','E');
 
-UPDATE CLIENTE.EXPEDIENTE SET tipodeSangre = REMPLACE (tipodeSangre,'B','O') WHERE tipodeSangre='NA' AND padeciminetoCro='NA';
+SELECT * FROM CLINICA.EXPEDIENTE;
+
+UPDATE CLINICA.EXPEDIENTE SET tiposangre = REPLACE (tiposangre,'B','O') WHERE tiposangre='NA' AND padecimientocro='NA';
 
 
 --FUNCIONES DE FECHA Y HORA
@@ -67,9 +69,10 @@ SELECT DATE_PART ('month','2011-10-01'::date) - DATE_PART ('month', '2011-02-01'
 
 SELECT DATE_PART ('day','2011-10-10'::date) - DATE_PART ('day', '2011-10-01'::date) AS DIF_DIA;
 
-SELECT DATE_PART ('hour','2011-10-10 15:00'::timetamp) - DATE_PART ('hour','2011-10-10 9:00'::date) AS DIF_HORA;
+SELECT DATE_PART('hour','2011-10-10 15:00'::timestamp) - DATE_PART('hour','2011-10-10 09:00'::timestamp) AS DIF_HORA;
 
-SELECT DATE_PART ('min','2011-10-10 15:40'::timetamp) - DATE_PART ('min','2011-10-10 15:00'::date) AS DIF_MIN;
+SELECT DATE_PART('min', '2011-10-10 15:40'::timestamp) - DATE_PART('min', '2011-10-10 15:00'::timestamp) AS DIF_MIN;
 
-SELECT CONCAT(DATE_PART ('sec','20-12-30 90:00:59'::timetamp - '2011-12-30 09:00:00'::timestamp),' Segundos')
+SELECT CONCAT(DATE_PART('epoch', '2020-12-30 09:00:59'::timestamp - '2011-12-30 09:00:00'::timestamp), ' Segundos') 
 AS DIF_SEG;
+
