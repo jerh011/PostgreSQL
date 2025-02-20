@@ -1,0 +1,63 @@
+CREATE OR REPLACE FUNCTION CLINICA.WHILE(Num INT)
+RETURNS INT AS $$
+DECLARE i INT :=0;
+BEGIN 
+	WHILE i< Num LOOP 
+		RAISE NOTICE '%x5 %',i,i*5;
+		i=i+1;
+	END LOOP;
+END;
+$$ LANGUAGE plpgsql; 
+
+SELECT CLINICA.WHILE(20);
+
+--Numeros pares
+CREATE OR REPLACE FUNCTION CLINICA.NumerosPAres(Num INT)
+RETURNS INT AS $$
+DECLARE i INT :=0;
+BEGIN 
+	WHILE i<= Num LOOP 
+		IF(I%2)=0 THEN
+		RAISE NOTICE 'CONTADOR %',i;
+		END IF;
+		i=i+1;
+	END LOOP;
+END;
+$$ LANGUAGE plpgsql; 
+
+SELECT CLINICA.NumerosPAres(20);
+
+--Numeros inpares
+CREATE OR REPLACE FUNCTION CLINICA.Numerosinpares(Num INT)
+RETURNS INT AS $$
+DECLARE i INT :=0;
+BEGIN 
+	WHILE i< Num LOOP 
+		IF(I%2)<>0 THEN
+		RAISE NOTICE 'CONTADOR %',i;
+		END IF;
+		i=i+1;
+	END LOOP;
+END;
+$$ LANGUAGE plpgsql; 
+
+SELECT CLINICA.Numerosinpares(20);
+
+---numeros inpares pares 
+
+CREATE OR REPLACE FUNCTION CLINICA.NumerosPARinpares(Num INT)
+RETURNS INT AS $$
+DECLARE i INT :=0;
+BEGIN 
+	WHILE i< Num LOOP 
+		IF(I%2)<>0 THEN
+			RAISE NOTICE 'INPAR %',i;
+		ELSEIF(I%2)=0 THEN
+			RAISE NOTICE 'PAR %',i;
+		END IF;
+		i=i+1;
+	END LOOP;
+END;
+$$ LANGUAGE plpgsql; 
+
+SELECT CLINICA.NumerosPARinpares(20);
